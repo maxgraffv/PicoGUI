@@ -23,7 +23,7 @@ public class Main {
         ViewWidget rectangle = new ViewWidget(300, 300);
         mainWindow.add(rectangle);
 
-        SliderWidget sliderWidget = new SliderWidget(200, 400);
+        SliderWidget sliderWidget = new SliderWidget(200, 400, 0, 10);
         sliderWidget.setDisplay(dataWidget);
         mainWindow.add(sliderWidget);
 

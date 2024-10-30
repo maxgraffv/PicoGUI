@@ -10,12 +10,14 @@ public class SliderWidget extends Widget{
 
     private DataWidget valueDisplay;
 
-    SliderWidget(int width, int height)
+    SliderWidget(int width, int height, int min, int max)
     {
         super(width, height);
 
         slider = new JSlider();
         slider.setPreferredSize(new Dimension(width/2, height/2));
+        slider.setMaximum(max);
+        slider.setMinimum(min);
 
         slider.addChangeListener(new ChangeListener() {
             @Override
