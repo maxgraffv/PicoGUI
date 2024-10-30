@@ -10,9 +10,9 @@ public class Plot2dWidget extends Widget {
     private List<Point> pointsList = new ArrayList<>();
     float shift;
 
-    Plot2dWidget(int width, int height, Color bg_color)
+    Plot2dWidget(int width, int height)
     {
-        super(width, height, bg_color);
+        super(width, height);
         shift = 0;
 
         for (int x = 0; x <= width; x += 1) {

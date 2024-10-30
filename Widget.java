@@ -7,7 +7,7 @@ import java.awt.*;
 import javax.swing.*;
 
 
-public class Widget extends JPanel{
+public abstract class Widget extends JPanel{
     private static int id_counter = 0;
 
     private int id;
@@ -18,15 +18,16 @@ public class Widget extends JPanel{
     private JFrame widgetWindow;
 
     static Color defaultBorderColor = new Color(70, 70, 140);
+    static Color defaultBackgroundColor = new Color(0, 0, 30);
 
     JButton detachButton = new JButton("detach");
 
-    Widget(int width, int height, Color bg_color)
+    Widget(int width, int height)
     {
         this.id = id_counter++;
         this.width = width;
         this.height = height;
-        this.backgroundColor = bg_color;
+        this.backgroundColor = defaultBackgroundColor;
 
         this.setBackground(backgroundColor);
         this.setPreferredSize(new Dimension(width, height));
