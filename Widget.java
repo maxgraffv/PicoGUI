@@ -17,8 +17,8 @@ public abstract class Widget extends JPanel{
     private Color backgroundColor;
     private JFrame widgetWindow;
 
-    static Color defaultBorderColor = new Color(70, 70, 140);
-    static Color defaultBackgroundColor = new Color(0, 0, 30);
+    static Color defaultBorderColor = new Color(180, 0, 200);
+    static Color defaultBackgroundColor = new Color(0, 0, 80);
 
     JButton detachButton = new JButton("detach");
 
