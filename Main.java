@@ -11,6 +11,22 @@ public class Main {
 
         System.out.println("Pico GUI running...");       
 
+
+        DataParser dp = new DataParser("data.txt");
+
+        for(int i = 0; i < dp.getDataPoints().size(); i++)
+        {
+
+            for(int j = 0; j < dp.getDataPoints().get(i).size(); j++)
+            {
+                System.out.print(" |"+ dp.getDataPoints().get(i).get(j)+ "| ");
+            }
+            System.out.print("\n ->");
+        }
+
+
+
+
         MainWindow mainWindow = MainWindow.getInstance();
 
 
