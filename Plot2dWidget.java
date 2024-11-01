@@ -14,6 +14,9 @@ public class Plot2dWidget extends Widget {
     private List<Point> pointsList = new ArrayList<>();
     float shift;
 
+    private int verticalShift;
+    private int verticalScale;
+
     List<List<Double>> dataList;
 
     Plot2dWidget(int width, int height)
@@ -52,7 +55,8 @@ public class Plot2dWidget extends Widget {
             }
         );
 
-
+        verticalShift = height/2;
+        verticalScale = 1200;
         
 
 
@@ -75,6 +79,8 @@ public class Plot2dWidget extends Widget {
         int w = getWidth();
         int h = getHeight();
 
+        verticalShift = h/2;
+
         // setBackground(Color.BLACK);
         g2d.setColor(defaultBackgroundColor);
         g2d.fillRect(10, 10, w-20, h-20);
@@ -92,19 +98,16 @@ public class Plot2dWidget extends Widget {
         System.out.println(dataList.size());
 
         
-        System.out.println("##########");
 
         for(int i = 1; i < pointsList.size(); i++)
         {
-            g2d.drawLine( (int)(pointsList.get(i-1).x), (int)pointsList.get(i-1).y*20 + 40,
-                (int)pointsList.get(i).x, (int)pointsList.get(i).y*20 + 40
+            g2d.drawLine( (int)(pointsList.get(i-1).x), (int)(pointsList.get(i-1).y*verticalScale) + verticalShift,
+                (int)pointsList.get(i).x, (int)(pointsList.get(i).y*verticalScale) + verticalShift
             );
 
-            System.out.println( "Point x: "+pointsList.get(i).x + " \ty:"+ pointsList.get(i).y );
         }
-        System.out.println("##########");
 
-        g2d.setColor(Color.WHITE);
+        g2d.setColor(new Color(0xFF, 0xFF, 0xFF, 128));
 
         g2d.drawLine(0, h/2, w, h/2); //x axis
         g2d.drawLine(w / 2, 0, w /2, h); //y axis
