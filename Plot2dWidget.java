@@ -85,7 +85,7 @@ public class Plot2dWidget extends Widget {
         g2d.setColor(defaultBackgroundColor);
         g2d.fillRect(10, 10, w-20, h-20);
 
-        g2d.setColor(Color.RED);
+        g2d.setColor(Color.YELLOW);
 
         pointsList.clear();
         int x = 0;
@@ -96,7 +96,6 @@ public class Plot2dWidget extends Widget {
         }
 
         System.out.println(dataList.size());
-
         
 
         for(int i = 1; i < pointsList.size(); i++)
@@ -104,7 +103,23 @@ public class Plot2dWidget extends Widget {
             g2d.drawLine( (int)(pointsList.get(i-1).x), (int)(pointsList.get(i-1).y*verticalScale) + verticalShift,
                 (int)pointsList.get(i).x, (int)(pointsList.get(i).y*verticalScale) + verticalShift
             );
+        }
 
+        List<Double> yAxis = new ArrayList<>();
+
+        for(int i = 0; i < pointsList.size(); i++)
+        {
+            yAxis.add(pointsList.get(i).y);
+        }
+
+        g2d.setColor(Color.RED);
+        KalmanFilter kf = new KalmanFilter(w, h, x);
+        List<Double> data_filtered = kf.filter(yAxis);
+        for(int i = 1; i < pointsList.size(); i++)
+        {
+            g2d.drawLine( (int)(pointsList.get(i-1).x), (int)(data_filtered.get(i-1)*verticalScale) + verticalShift,
+                (int)pointsList.get(i).x, (int)(data_filtered.get(i)*verticalScale) + verticalShift
+            );
         }
 
         g2d.setColor(new Color(0xFF, 0xFF, 0xFF, 128));

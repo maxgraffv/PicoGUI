@@ -30,7 +30,7 @@ public class Main {
         MainWindow mainWindow = MainWindow.getInstance();
 
 
-        Plot2dWidget plot2dWidget = new Plot2dWidget(300, 150);
+        Plot2dWidget plot2dWidget = new Plot2dWidget(600, 300);
         mainWindow.add(plot2dWidget);
 
         DataWidget dataWidget = new DataWidget(200, 150);
